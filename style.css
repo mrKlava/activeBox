@@ -1,0 +1,802 @@
+body {
+	margin: 0;
+	font-family: 'Raleway', sans-serif;
+	font-size: 10px;
+	font-weight: 300;
+	color: #6c7279;
+	background-color: #fff;
+	-webkit-font-smoothing: antialiased; /* to make fonts look more smooth*/
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box; /*sets padding inside of border and do not change actual size of box */
+}
+
+/*get rid of all margins, if we will need them, we'll add them later*/
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+p {
+	margin: 0 0 10px 0;
+}
+
+/*Container
+--------------------------*/
+
+.container {
+	width: 100%;
+	max-width: 1200px; /*we add extra 30px to 1170px of original design, because of padding*/
+	margin: 0 auto;
+	padding: 0 15px; /*this is made to make gap from left and right of the screen*/
+}
+
+/*Header
+--------------------------*/
+
+.header {
+	height: 100px;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+	
+}
+
+.header.fixed {
+	position: fixed;
+	background: #31344e;
+	height: auto;
+}
+
+.header.fixed .header-inner {
+	padding: 15px 0;
+	border-bottom: 0;
+}
+
+.header-inner {
+	display: flex;
+	justify-content: space-between; /*creates space between flex elements*/
+	padding: 35px 0px;
+	border-bottom: 1px solid #515369;
+	align-items: center; /*aligns elements with horizontal line*/
+}
+
+/*NAV
+--------------------------*/
+
+.nav {
+	display: flex;
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.nav-link {
+	margin-left: 50px;
+	color: #fff;
+	text-decoration: none;
+	opacity: .75;
+	
+	transition: opacity .1s linear;
+	
+}
+
+.nav-link:hover {
+	opacity: 1;
+}
+
+.nav-link:first-child {
+	margin-left: 0px;
+}
+
+/*INTRO
+--------------------------*/
+
+.intro {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+	height: 750px;
+	padding-top: 100px;
+	background:#31344e url("images/intro-bg.jpg") no-repeat center / cover;
+	/*
+	background-image: url("");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	*/
+	/*some properties are not supported by all browser so we need check and use specific properties https://caniuse.com/*/
+	
+}
+
+.intro-inner {
+	width: 100%;
+	max-width: 970px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.intro-title {
+	margin: 0 0 30px 0;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 65px;
+	line-height: 1.1; /*71px;*/
+	color: #fff;
+	font-weight: 700;
+	text-transform: uppercase;
+	
+}
+
+.intro-subtitle {
+	font-size: 22px;
+	color: #fff;
+	line-height: 1.5;
+	font-weight: 400;
+	
+	margin-bottom: 60px;
+	
+}
+
+/*BUTTON
+--------------------------*/
+
+.btn {
+	display: inline-block;
+	vertical-align: top;
+	
+	border-radius: 2px;
+	border: 0;
+	cursor: pointer;
+	
+	font-family: inherit; /*parent font*/
+	font-size: 13px;
+	color: #fff;
+	font-weight: 600;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding:14px 40px; 
+	text-align: center;
+	
+	transition: background .1s linear;
+}
+
+.btn--red {
+	background-color: #e84545;
+}
+
+.btn--red:hover {
+	background-color: #dd3434;
+}
+
+.btn--long {
+	min-width: 280px;
+}
+
+/*FEATURES
+--------------------------*/
+
+.features {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 100px 0;
+	
+}
+
+.features-item {
+	padding: 0 40px;
+	margin: 25px 0;
+	width: 33.33333%;
+	text-align: center;
+	
+}
+
+.features-icon {
+	margin-bottom: 25px;
+	
+}
+
+.features-tittle {
+	margin-bottom: 20px;
+	
+	font-size: 14px;
+	color: #2d3033;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.features-text {
+	font-size: 14px;
+	line-height: 1.5;
+	color: #6c7279;
+	font-weight: 400;
+}
+
+/*WORKS
+--------------------------*/
+
+.works {
+	display: flex;
+	flex-wrap: wrap;
+	
+}
+
+/*we set this element to relative (parent element)*/
+.works-item {
+	border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+	width: 25%;
+	height: 350px;
+	position: relative;
+	overflow: hidden; /*everything what goes beyond width and height will be hidden*/
+}
+
+/*when you hover on works item it will give you .works-content*/
+.works-item:hover .works-content {
+	opacity: 1;
+}
+
+/*and with absolute position we set position inside of parent element. And with top: 50%; left: 50%; transform: translated3d(-50%, -50%, 0) - we set position of image exactly in the center on X and Y scale*/
+.works-img {
+	min-width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	
+	transform: translate3d(-50%, -50%, 0)
+}
+
+.works-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /*vertical*/
+	text-align: center; /*horizontal*/
+	width: 100%;
+	height: 100%;
+	background-color: rgba(232, 69, 69, 0.9); /*rgba(red, green, blue, opacity)*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	opacity: 0;
+}
+
+.works-title {
+	margin-bottom: 5px;
+	font-size: 14px;
+	font-weight: 700;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.works-text {
+	font-size: 14px;
+	color: #fff;
+}
+
+/* TEAM
+--------------------------*/
+
+.team {
+	margin: 100px 0 70px 0; /*70px because we have margin 30px on item, but we need 100px total margin*/
+}
+
+.team-inner {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px; /*this negative margin is made to kill padding of .team-item*/
+}
+
+.team-item {
+	width: 25%;
+	padding: 0 15px;
+	margin-bottom: 30px;
+}
+
+/*this will allow to resize image when resolution is changing and keep it place*/
+.team-img {
+	display: block;
+	max-width: 100%; 
+	height: auto;
+	margin-bottom: 20px;
+}
+
+.team-name {
+	margin-bottom: 8px;
+	
+	font-size: 22px;
+	color: #2d3033;
+}
+
+.team-title {
+	margin-bottom: 15px;
+	
+	font-size: 13px;
+	color: #e84545;
+	text-transform: uppercase;
+}
+
+.team-text {
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: #6c7279;
+	line-height: 1.5;
+}
+
+/* SOCIAL
+--------------------------*/
+
+.social {
+	display: flex;
+}
+
+.social-footer {
+	justify-content: center;
+}
+
+.social-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	margin-right: 4px;
+	background-color: #fff;
+	border: 1px solid #e8ecee;
+	
+	transition: background .1s linear;
+	
+}
+
+.social-item:hover {
+	background-color: #e8ecee;
+}
+
+.social-item:hover .social-icon {
+	fill: #000;
+}
+/*this is work with modificaters*/
+.social-footer .social-item {
+	background: transparent;
+	border-width: 2px;
+	border-color: #fff;
+	border-radius: 2px;
+	
+}
+
+.social-footer .social-item:hover {
+	background-color: #fff;
+}
+
+.social-icon {
+	fill: #c6cacc;
+	display: block;
+	height: 18px;
+	
+	transition: fill .1s linear;
+	
+}
+
+.social-footer .social-icon {
+	fill: #fff;
+}
+
+/* TESTIMONIALS
+--------------------------*/
+.reviews {
+	background-color: #53354a;
+	overflow: hidden;
+}
+
+.reviews-slider {
+	height: 500px;
+	overflow: hidden;
+}
+
+.reviews-slider.slick-initialized {
+	height: auto;
+}
+
+.reviews-item {
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+
+.reviews-photo {
+	width: 50%;
+	height: 500px;
+	position: relative;
+	
+}
+
+.reviews-img {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	z-index: 1;
+	
+	transform: translateY(-50%); /*if image will be bigger than 500px it will be aligned by Y (vertical) in center*/
+}
+
+.reviews-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 50%;
+	padding-left: 80px;
+}
+
+.reviews-text {
+	font-family: 'Cardo', serif;
+	font-size: 36px;
+	font-style: italic;
+	line-height: 1.2;
+	color: #fff;
+	margin-bottom: 25px;
+}
+
+.reviews-author {
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.slick-dots {
+	display: flex;
+	justify-content: center;
+	padding: 0 0 20px;
+	margin: 0;
+	list-style: none;
+	width: 50%;
+	
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 2;
+}
+
+.slick-dots li {
+	margin: 0 5px;
+}
+
+.slick-dots button {
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	opacity: .5;
+	border-radius: 50%;
+	
+	border: 0;
+	padding: 0;
+	
+	font-size: 0;
+	color: transparent;
+	
+	cursor: pointer;
+}
+
+.slick-dots button:focus {
+	outline: 0;
+}
+
+.slick-dots .slick-active button {
+	opacity: 1;
+	width: 13px;
+	height: 13px;
+}
+
+/* DOWNLOAD
+--------------------------*/
+.download {
+	margin: 90px 0;
+	text-align: center;
+	
+}
+
+.download-title {
+	font-size: 28px;
+	color: #2d3033;
+	font-weight: 300;
+	margin-bottom: 10px;
+}
+
+.download-subtitle {
+	font-size: 13px;
+	color: #2d3033;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 30px;
+}
+
+/* FOOTER
+--------------------------*/
+
+.footer {
+	background-color: #3a3e64;
+}
+
+.footer-inner {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 70px 0;
+}
+
+.footer-block {
+	width: 33.33333%;
+	text-align: center;
+	padding: 0 15px;
+}
+
+.footer-title {
+	font-size: 14px;
+	font-weight: 700;
+	color: #fff;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+
+.footer-address {
+	font-size: 14px;
+	color: rgba(255, 255, 255, .5);
+	font-style: normal;
+	line-height: 1.5;
+}
+
+.footer-text {
+	font-size: 14px;
+	color: rgba(255, 255, 255, .5);
+	line-height: 1.5;
+}
+
+/* COPYRIGHT
+--------------------------*/
+
+.copyright {
+	background-color: #313454;
+	padding: 20px 0;
+}
+
+.copyright-text {
+	text-align: center;
+	color: #808080;
+	line-height: 1.5;
+	font-size: 14px;
+	
+}
+
+.copyright-text span {
+	color: #fff;
+}
+
+.burger-nav {
+	cursor: pointer;
+	display: none;
+	background-color: transparent;
+	border: 0;
+	padding: 15px 0;
+}
+
+.burger-item {
+	display: block;
+	width: 30px;
+	height: 3px;
+	background-color: #fff;
+	
+	font-size: 0;
+	color: transparent;
+	
+	position: relative;
+}
+
+.burger-item:before,
+.burger-item:after {
+	content: ""; /*this is content which will be before "MENU", and it is the same for after*/
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	position: absolute;
+	left: 0;
+	z-index: 1;
+}
+
+.burger-item:before {
+	top: -8px;
+}
+
+.burger-item:after {
+	bottom: -8px;
+}
+
+
+/* Media queries
+--------------------------*/
+/*this is made to adapt web page on different resolutions/devices
+!!! media queries should be lower than original properties, because file is reading from top to down
+*/
+@media (max-width: 1200px) { /*This is called brake-point*/
+	
+/*Works*/
+	.works-item {
+		width: 50%;
+	}
+}
+
+
+@media (max-width: 991px) { 
+	
+/*Nav*/
+	.nav {
+		display: none;
+		
+		/*Here we made nav for mobiles*/
+		background-color: #31344e;
+		width: 100%;
+		position: absolute;
+		text-align: right;
+		right: 0;
+		top: 100%;
+		flex-direction: column;
+	}
+	
+	.nav.show {
+		/*if we have flex we need to use flex, if block than it is block*/
+		display: flex;
+	}
+	
+	.nav-link {
+		padding: 10px 15px;
+	}
+	
+/*Burger*/
+	.burger-nav {
+		display: block;
+	}	
+	
+/*Intro*/
+	.intro-title {
+		font-size: 40px;
+	}
+	
+/*Features*/
+	.features-item {
+		width: 50%;
+	}
+	
+/*Team*/
+	.team-item {
+		width: 50%;
+		text-align: center;
+	}
+	
+	.team-img {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.social {
+		justify-content: center;
+	}
+	
+/*Reviews*/
+	.reviews-photo {
+		width: 100%;
+		overflow: hidden;
+		margin: 15px 0 40px 0;
+	}
+	
+	.reviews-content {
+		width: 100%;
+		padding-left: 0;
+		padding-bottom: 15px;
+	}
+	
+	.slick-dots {
+		flex-wrap: wrap;
+		position: static;
+		width: 100%;
+		margin: 0 auto;
+		
+	}
+}
+
+
+@media (max-width: 767px) {
+	
+/*intro*/
+	.intro {
+		height: auto;
+		padding-top: 130px;
+		padding-bottom: 30px;
+	}
+	
+	.intro-title {
+		font-size: 30px;
+		margin-bottom: 30px;
+	}
+	
+	.intro-subtitle {
+		font-size: 16px;
+	}
+	
+/*Features*/
+	.features {
+		margin: 40px 0;
+	}
+	
+	.features-item {
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		
+	}
+	
+/*Works*/
+	.works-item {
+		width: 100%;
+		height: 300px;
+		
+	}
+	
+/*Team*/
+	.team {
+		margin-top: 60px;
+		margin-bottom: 30px;
+	}
+	
+	.team-item {
+		width: 100%;
+	}
+	
+/*Reviews*/
+	.reviews-text {
+		font-size: 25px;
+	}
+	
+/*Button*/
+	.btn-long {
+		min-width: 260px;
+	}
+	
+/*Download*/
+	.download {
+		margin: 50px 0;
+	}
+	
+	.download-title {
+		font-size: 24px;
+	}
+	
+/*Footer*/
+	.footer-inner {
+		padding: 30px 0px;
+	}
+	
+	.footer-block {
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		margin-bottom: 30px;
+	}
+	
+	.footer-block:last-child {
+		margin-bottom: 0;
+	}
+}
+
+@media (max-width: 414px) {
+	
+	.reviews-img {
+		right: -100px;
+	}
+}
+
+
+
+
